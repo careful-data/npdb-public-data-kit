@@ -1,0 +1,289 @@
+version: "2026_q1"
+source_url: "https://www.npdb.hrsa.gov/resources/publicData.jsp"
+expected_row_count: 1895122
+cell_suppression_threshold: 11
+
+columns:
+  - name: seqno
+    type: int64
+    nullable: false
+    description: "Sequence number, unique per edition (not stable across releases)"
+
+  - name: rectype
+    type: utf8
+    nullable: false
+    allowed_values: ["A", "C", "M", "P"]
+    code_map: rectype.yaml
+    description: "Record type form submitted to NPDB"
+
+  - name: reptype
+    type: int32
+    nullable: false
+    code_map: reptype.yaml
+    description: "Report type code"
+
+  - name: origyear
+    type: int32
+    nullable: false
+    range: [1990, 2026]
+    description: "Year original report was processed"
+
+  - name: workstat
+    type: utf8
+    nullable: true
+    code_map: workstat.yaml
+    description: "Practitioner work state"
+
+  - name: workctry
+    type: utf8
+    nullable: true
+    description: "Practitioner work country (deprecated since 2017)"
+
+  - name: homestat
+    type: utf8
+    nullable: true
+    code_map: workstat.yaml
+    description: "Practitioner home state"
+
+  - name: homectry
+    type: utf8
+    nullable: true
+    description: "Practitioner home country (deprecated since 2017)"
+
+  - name: licnstat
+    type: utf8
+    nullable: true
+    code_map: workstat.yaml
+    description: "Practitioner state of license (first listed)"
+
+  - name: licnfeld
+    type: int32
+    nullable: true
+    code_map: licnfeld.yaml
+    description: "Practitioner field of license"
+
+  - name: practage
+    type: int32
+    nullable: true
+    code_map: practage.yaml
+    description: "Practitioner age group"
+
+  - name: grad
+    type: int32
+    nullable: true
+    description: "Graduation year group"
+
+  - name: algnnatr
+    type: int32
+    nullable: true
+    description: "Malpractice allegation group"
+
+  - name: alegatn1
+    type: int32
+    nullable: true
+    description: "Specific malpractice allegation 1"
+
+  - name: alegatn2
+    type: int32
+    nullable: true
+    description: "Specific malpractice allegation 2"
+
+  - name: outcome
+    type: int32
+    nullable: true
+    description: "Severity of alleged malpractice injury"
+
+  - name: malyear1
+    type: int32
+    nullable: true
+    description: "Year of act or omission 1"
+
+  - name: malyear2
+    type: int32
+    nullable: true
+    description: "Year of act or omission 2"
+
+  - name: payment
+    type: float64
+    nullable: true
+    dollar: true
+    range: [0, null]
+    description: "Payment amount (single payment, in dollars)"
+
+  - name: totalpmt
+    type: float64
+    nullable: true
+    dollar: true
+    range: [0, null]
+    description: "Total payment by this payer for this practitioner"
+
+  - name: paynumbr
+    type: utf8
+    nullable: true
+    description: "Single or multiple payment indicator"
+
+  - name: numbprsn
+    type: int32
+    nullable: true
+    description: "Number of practitioners payment is for"
+
+  - name: paytype
+    type: utf8
+    nullable: true
+    description: "Payment a result of settlement or judgment"
+
+  - name: pyrrltns
+    type: utf8
+    nullable: true
+    description: "Relationship of paying entity to practitioner"
+
+  - name: ptage
+    type: int32
+    nullable: true
+    description: "Patient age group"
+
+  - name: ptsex
+    type: utf8
+    nullable: true
+    description: "Patient sex"
+
+  - name: pttype
+    type: utf8
+    nullable: true
+    description: "Patient type (inpatient/outpatient)"
+
+  - name: aayear
+    type: int32
+    nullable: true
+    description: "Year of adverse action"
+
+  - name: aaclass1
+    type: int32
+    nullable: true
+    description: "Adverse action classification 1"
+
+  - name: aaclass2
+    type: int32
+    nullable: true
+    description: "Adverse action classification 2"
+
+  - name: aaclass3
+    type: int32
+    nullable: true
+    description: "Adverse action classification 3"
+
+  - name: aaclass4
+    type: int32
+    nullable: true
+    description: "Adverse action classification 4"
+
+  - name: aaclass5
+    type: int32
+    nullable: true
+    description: "Adverse action classification 5"
+
+  - name: basiscd1
+    type: utf8
+    nullable: true
+    description: "Basis for action 1"
+
+  - name: basiscd2
+    type: utf8
+    nullable: true
+    description: "Basis for action 2"
+
+  - name: basiscd3
+    type: utf8
+    nullable: true
+    description: "Basis for action 3"
+
+  - name: basiscd4
+    type: utf8
+    nullable: true
+    description: "Basis for action 4"
+
+  - name: basiscd5
+    type: utf8
+    nullable: true
+    description: "Basis for action 5"
+
+  - name: aalentyp
+    type: utf8
+    nullable: true
+    description: "Adverse action length type"
+
+  - name: aalength
+    type: int32
+    nullable: true
+    description: "Length of adverse action penalty in years"
+
+  - name: aaefyear
+    type: int32
+    nullable: true
+    description: "Effective year of adverse action"
+
+  - name: aasigyr
+    type: int32
+    nullable: true
+    description: "Year of adverse action report signature"
+
+  - name: type
+    type: int32
+    nullable: true
+    description: "Entity type (assigned)"
+
+  - name: practnum
+    type: int64
+    nullable: true
+    sensitive: true
+    description: "File-specific pseudonym. NOT a real identifier. Stripped by default."
+
+  - name: accrrpts
+    type: int32
+    nullable: true
+    description: "Subject number of accreditation reports"
+
+  - name: npmalrpt
+    type: int32
+    nullable: true
+    description: "Practitioner number of malpractice payment reports"
+
+  - name: nplicrpt
+    type: int32
+    nullable: true
+    description: "Practitioner number of licensure reports"
+
+  - name: npclprpt
+    type: int32
+    nullable: true
+    description: "Practitioner number of clinical privileges reports"
+
+  - name: nppsmrpt
+    type: int32
+    nullable: true
+    description: "Practitioner number of professional society reports"
+
+  - name: npdearpt
+    type: int32
+    nullable: true
+    description: "Practitioner number of DEA reports"
+
+  - name: npexcrpt
+    type: int32
+    nullable: true
+    description: "Practitioner number of exclusion reports"
+
+  - name: npgarpt
+    type: int32
+    nullable: true
+    description: "Practitioner number of government administrative reports"
+
+  - name: npctmrpt
+    type: int32
+    nullable: true
+    description: "Practitioner number of contract termination reports"
+
+  - name: fundpymt
+    type: int32
+    nullable: true
+    description: "State patient compensation fund payment indicator"

@@ -1,0 +1,6 @@
+# Record type codes (RECTYPE)
+values:
+  A: "Adverse Action Report (legacy format, prior to 11/22/1999)"
+  C: "Adverse Action Report (CAAR format, 11/22/1999+)"
+  M: "Malpractice Payment (legacy format, prior to 1/31/2004)"
+  P: "Malpractice Payment (current format, 1/31/2004+)"
