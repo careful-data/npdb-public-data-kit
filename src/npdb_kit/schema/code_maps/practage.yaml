@@ -1,0 +1,11 @@
+# Practitioner age group codes (PRACTAGE)
+values:
+  10: "Ages 19 and under"
+  20: "Ages 20 through 29"
+  30: "Ages 30 through 39"
+  40: "Ages 40 through 49"
+  50: "Ages 50 through 59"
+  60: "Ages 60 through 69"
+  70: "Ages 70 through 79"
+  80: "Ages 80 through 89"
+  90: "Ages 90 through 99"
